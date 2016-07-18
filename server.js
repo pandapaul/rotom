@@ -25,7 +25,7 @@ function routes() {
 		    		text: '*Grass rustles* It\'s a friggin\' ' + body.name + '!',
 				    attachments: [
 				        {
-				            "text": body.sprites.front_default
+				            "thumb_url": body.sprites.front_default
 				        }
 				    ]
 				};
