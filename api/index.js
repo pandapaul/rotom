@@ -16,7 +16,7 @@ router.get('/', function (req, res) {
 		return;
 	}
 
-	if(req.query.channel !== 'pokemon') {
+	if(req.query.channel_name !== 'pokemon') {
 		res.json({
 			response_type: 'ephemeral',
 			text: 'Let\'s keep this stuff where it belongs.'
