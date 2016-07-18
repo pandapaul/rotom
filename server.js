@@ -6,11 +6,12 @@ routes();
 listen();
 
 function routes() {
-	app.get('/', function (req, res) {
+	app.post('/', function (req, res) {
 
 		var response = {
 		    "response_type": "in_channel",
-		    "text": "*Grass rustles* It's a friggin' Evee!"
+		    "text": "*Grass rustles* It's a friggin' Evee!",
+		    "req": req.body
 		}
 
 	    res.json(response);
