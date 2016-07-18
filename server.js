@@ -9,14 +9,13 @@ listen();
 function routes() {
 	app.get('/', function (req, res) {
 		var pokemon = req && req.query && req.query.text && req.query.text.toLowerCase(),
-			url = 'http://pokeapi.co/api/v2/pokemon/' + pokemon,
-			defaultErrorMessage = {
-				'response_type': 'ephemeral',
-				'text': 'Sorry, ' + pokemon + ' is not a pokémon.'	
-			}
-
+			url = 'http://pokeapi.co/api/v2/pokemon/' + pokemon;
+			
 		if(!pokemon || pokemon === '') {
-			res.json(defaultErrorMessage);
+			res.json({
+				response_type: 'ephemeral',
+				text: 'Type /rotom the_name_of_a_pokémon to report that a pokémon is nearby.'
+			});
 			return;
 		}
 
@@ -38,7 +37,10 @@ function routes() {
 				    ]
 				};
 			} else {
-				slackMessage = defaultErrorMessage;
+				slackMessage = {
+					'response_type': 'in_channel',
+					'text': 'Someone thought they saw a *' + pokemon.toUpperCase() + '*, but I\'m not sure what that is.'
+				};
 			}
 		    res.json(slackMessage);
 		});
