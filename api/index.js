@@ -8,10 +8,10 @@ router.get('/', function (req, res) {
 	var name = req && req.query && req.query.text && req.query.text.toLowerCase(),
 		url = 'http://pokeapi.co/api/v2/pokemon/' + name;
 
-	if(req.query.channel_name !== '\"pokemon\"') {
+	if(req.query.channel_id !== 'G1RDGGNNB') {
 		res.json({
 			response_type: 'ephemeral',
-			text: 'Let\'s keep this stuff where it belongs.  Not in ' + req.query.channel_id
+			text: 'Let\'s keep this stuff where it belongs.'
 		});
 		return;
 	}
