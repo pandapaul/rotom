@@ -7,7 +7,13 @@ listen();
 
 function routes() {
 	app.get('/', function (req, res) {
-	    res.json({test:'test'});
+
+		var response = {
+		    "response_type": "in_channel",
+		    "text": "*Grass rustles* It's a friggin' Evee!"
+		}
+
+	    res.json(response);
 	});
 }
 
