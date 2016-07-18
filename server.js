@@ -9,7 +9,11 @@ listen();
 function routes() {
 	app.get('/', function (req, res) {
 		var pokemon = req && req.query && req.query.text && req.query.text.toLowerCase(),
-			url = 'http://pokeapi.co/api/v2/pokemon/' + pokemon;
+			url = 'http://pokeapi.co/api/v2/pokemon/' + pokemon,
+			defaultErrorMessage = {
+				'response_type': 'ephemeral',
+				'text': 'Sorry, ' + pokemon + ' is not a pokémon.'	
+			}
 
 		if(!pokemon || pokemon === '') {
 			res.json(defaultErrorMessage);
@@ -18,14 +22,14 @@ function routes() {
 
 		request(url, function (error, response, body) {
 			var slackMessage;
-			
+
 			if (!error && response.statusCode == 200) {
 				var body = JSON.parse(response.body);
 				slackMessage = {
 		    		response_type: 'in_channel',
 				    attachments: [
 				        {	
-				        	text:"";
+				        	text:"",
 				            image_url: body.sprites.front_default
 				        },{	
 				        	mrkdwn_in: ["text"],
@@ -40,11 +44,6 @@ function routes() {
 		});
 
 	});
-}
-
-var defaultErrorMessage = {
-	'response_type': 'ephemeral',
-	'text': 'That\'s not a pokémon'	
 }
 
 function listen() {
