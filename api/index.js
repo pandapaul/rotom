@@ -7,19 +7,19 @@ var express = require('express'),
 router.get('/', function (req, res) {
 	var name = req && req.query && req.query.text && req.query.text.toLowerCase(),
 		url = 'http://pokeapi.co/api/v2/pokemon/' + name;
-		
-	if(!name || name === '') {
-		res.json({
-			response_type: 'ephemeral',
-			text: 'Type /rotom the_name_of_a_pokémon to report that a pokémon is nearby.'
-		});
-		return;
-	}
 
 	if(req.query.channel_name !== 'pokemon') {
 		res.json({
 			response_type: 'ephemeral',
 			text: 'Let\'s keep this stuff where it belongs.'
+		});
+		return;
+	}
+			
+	if(!name || name === '') {
+		res.json({
+			response_type: 'ephemeral',
+			text: 'Type /rotom the_name_of_a_pokémon to report that a pokémon is nearby.'
 		});
 		return;
 	}
