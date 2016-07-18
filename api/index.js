@@ -5,13 +5,21 @@ var express = require('express'),
 	});
 
 router.get('/', function (req, res) {
-	var pokemon = req && req.query && req.query.text && req.query.text.toLowerCase(),
-		url = 'http://pokeapi.co/api/v2/pokemon/' + pokemon;
+	var name = req && req.query && req.query.text && req.query.text.toLowerCase(),
+		url = 'http://pokeapi.co/api/v2/pokemon/' + name;
 		
-	if(!pokemon || pokemon === '') {
+	if(!name || name === '') {
 		res.json({
 			response_type: 'ephemeral',
 			text: 'Type /rotom the_name_of_a_pokémon to report that a pokémon is nearby.'
+		});
+		return;
+	}
+
+	if(req.query.channel !== 'pokemon') {
+		res.json({
+			response_type: 'ephemeral',
+			text: 'Let\'s keep this stuff where it belongs.'
 		});
 		return;
 	}
@@ -36,7 +44,7 @@ router.get('/', function (req, res) {
 		} else {
 			slackMessage = {
 				'response_type': 'in_channel',
-				'text': 'Someone thought they saw a *' + pokemon.toUpperCase() + '*, but I\'m not sure what that is.'
+				'text': 'Someone thought they saw a *' + name.toUpperCase() + '*, but I\'m not sure what that is.'
 			};
 		}
 	    res.json(slackMessage);
