@@ -25,7 +25,7 @@ function routes() {
 		    		text: '*Grass rustles*',
 				    attachments: [
 				        {	
-				        	text: '~~Grass rustles~~ It\'s a friggin\' *' + body.name + '*!',
+				        	text: 'A wild *' + body.name.toUpperCase() + '* appeared!',
 				            thumb_url: body.sprites.front_default
 				        }
 				    ]
