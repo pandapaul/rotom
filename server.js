@@ -10,8 +10,7 @@ function routes() {
 
 		var response = {
 		    "response_type": "in_channel",
-		    "text": "*Grass rustles* It's a friggin' Evee!",
-		    "req": req.body
+		    "text": "*Grass rustles* It's a friggin' Evee! " + req.body
 		}
 
 	    res.json(response);
