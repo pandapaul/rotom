@@ -24,8 +24,9 @@ function routes() {
 		    		response_type: 'in_channel',
 		    		text: '*Grass rustles* It\'s a friggin\' ' + body.name + '!',
 				    attachments: [
-				        {
-				            "thumb_url": body.sprites.front_default
+				        {	
+				        	text: "Ho Snap",
+				            thumb_url: body.sprites.front_default
 				        }
 				    ]
 				};
