@@ -6,7 +6,7 @@ routes();
 listen();
 
 function routes() {
-	app.post('/', function (req, res) {
+	app.get('/', function (req, res) {
 
 		var response = {
 		    "response_type": "in_channel",
