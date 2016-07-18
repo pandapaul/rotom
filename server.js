@@ -18,21 +18,21 @@ function routes() {
 
 		request(url, function (error, response, body) {
 			var slackMessage;
+			
 			if (!error && response.statusCode == 200) {
 				var body = JSON.parse(response.body);
 				slackMessage = {
 		    		response_type: 'in_channel',
-		    		text: '*Grass rustles*',
 				    attachments: [
 				        {	
+				        	text:"";
+				            image_url: body.sprites.front_default
+				        },{	
+				        	mrkdwn_in: ["text"],
 				        	text: 'A wild *' + body.name.toUpperCase() + '* appeared!',
-				            thumb_url: body.sprites.front_default
 				        }
 				    ]
 				};
-
-				/*{
-				}*/
 			} else {
 				slackMessage = defaultErrorMessage;
 			}
@@ -44,7 +44,7 @@ function routes() {
 
 var defaultErrorMessage = {
 	'response_type': 'ephemeral',
-	'text': 'That\'s not a pokemon'	
+	'text': 'That\'s not a pokémon'	
 }
 
 function listen() {
