@@ -22,10 +22,10 @@ function routes() {
 				var body = JSON.parse(response.body);
 				slackMessage = {
 		    		response_type: 'in_channel',
-		    		text: '*Grass rustles* It\'s a friggin\' ' + body.name + '!',
+		    		text: '*Grass rustles*',
 				    attachments: [
 				        {	
-				        	text: "Ho Snap",
+				        	text: '~~Grass rustles~~ It\'s a friggin\' *' + body.name + '*!',
 				            thumb_url: body.sprites.front_default
 				        }
 				    ]
