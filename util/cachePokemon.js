@@ -2,6 +2,7 @@ var fs = require('fs'),
 	request = require('request');
 
 function cachePokemon() {
+	/*
 	request('http://pokeapi.co/api/v2/pokemon?limit=151', function (error, response, body) {
 
 		if (!error && response.statusCode == 200) {
@@ -9,7 +10,7 @@ function cachePokemon() {
 				pokemon = body.results,
 				results = [];
 
-			for(let i = 0; i<pokemon.length; i++) {
+			for(let i = 0; i < pokemon.length; i++) {
 				results.push({id: i+1, name: pokemon[i].name.replace('-f','♀').replace('-m','♂'), sprite: 'http://pokeapi.co/media/sprites/pokemon/' + (i + 1) + '.png'});
 			}
 
@@ -24,6 +25,7 @@ function cachePokemon() {
 			}); 
 		}
 	});
+	*/
 }
 
 module.exports = cachePokemon;
