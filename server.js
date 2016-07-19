@@ -7,7 +7,8 @@ routes();
 listen();
 
 function routes() {
-	app.use('/', api);
+	app.use('/api/slack/', api.slack);
+//	app.use('/api/admin/', api.admin);
 }
 
 function listen() {
