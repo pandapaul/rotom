@@ -13,8 +13,56 @@ body {
 	background: @color_rotom_body;
 
 	.rotom {
+		.rotom-eyes {
+			margin: 100px auto 0 auto;
+			height:120px;
+			text-align:center;
+
+			.rotom-eye {
+				display:inline-block;
+				width: 50px;
+				height:100px;
+				border-radius: ~"25px / 50px";
+				border: solid 1px @black;
+				background: @white;
+
+				&.left {
+					margin-right: 15px;
+					transform: rotate(-15deg);
+				}
+
+				&.right {
+					margin-left: 15px;
+					transform: rotate(15deg);
+				}
+
+				&::before {
+					position:absolute;
+					left:0;
+					content:"";
+					display:inline-block;
+					margin-top: 49.5px;
+					width: 49px;
+					height:0px;
+					border: solid 1px @black;
+				}
+
+				&::after {
+					content:"";
+					display:inline-block;
+					margin-top: 8px;
+					width: 34px;
+					height:84px;
+					border-radius: ~"17px / 42px";
+					border: solid 1px @black;
+					background: @color_rotom_blue;
+					position:relative;
+				}
+
+			}
+
+		}
 		> .title {
-			margin-top: 200px;
 			text-transform: uppercase;
 			text-align: center;
 			background: @white;
@@ -25,24 +73,54 @@ body {
 			.title-border();
 		}
 
-		&.purple > .title {
-			.title-border(@color_rotom_purple);			
+		&.purple {
+			> .title {
+				.title-border(@color_rotom_purple);			
+			}
+
+			.rotom-eye::after  {
+				background-color: @color_rotom_purple;
+			}
 		}
 
-		&.red > .title {
-			.title-border(@color_rotom_red);
+		&.red {
+			> .title {
+				.title-border(@color_rotom_red);			
+			}
+
+			.rotom-eye::after {
+				background-color: @color_rotom_red;
+			}
 		}
 
-		&.yellow > .title {
-			.title-border(@color_rotom_yellow);
+		&.yellow {
+			> .title {
+				.title-border(@color_rotom_yellow);			
+			}
+
+			.rotom-eye::after {
+				background-color: @color_rotom_yellow;
+			}
 		}
 
-		&.green > .title {
-			.title-border(@color_rotom_green);
+		&.green {
+			> .title {
+				.title-border(@color_rotom_green);			
+			}
+
+			.rotom-eye::after {
+				background-color: @color_rotom_green;
+			}
 		}
 
-		&.blue > .title {
-			.title-border(@color_rotom_blue);
+		&.blue {
+			> .title {
+				.title-border(@color_rotom_blue);			
+			}
+
+			.rotom-eye::after {
+				background-color: @color_rotom_blue;
+			}
 		}
 	}
 }

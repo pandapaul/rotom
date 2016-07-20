@@ -1,6 +1,9 @@
 require('../less/rotom.less');
 var $ = require('jquery');
 
+function build() {
+	updateColors();
+}
 
 function updateColors() {
 	var app = $('.rotom'),
@@ -39,4 +42,4 @@ function updateColors() {
 	rotomColorChanging();	
 }
 
-updateColors();
+build();
