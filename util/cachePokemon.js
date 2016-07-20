@@ -2,7 +2,7 @@ var fs = require('fs'),
 	request = require('request');
 
 function cachePokemon() {
-	/*
+	
 	request('http://pokeapi.co/api/v2/pokemon?limit=151', function (error, response, body) {
 
 		if (!error && response.statusCode == 200) {
@@ -25,7 +25,7 @@ function cachePokemon() {
 			}); 
 		}
 	});
-	*/
+
 }
 
 module.exports = cachePokemon;

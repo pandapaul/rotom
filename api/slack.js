@@ -1,6 +1,6 @@
 var express = require('express'),
 	fuse = require('fuse.js'),
-	pokemon = require('../resources/pokemon.json'),
+	pokemon = require('../static/resources/pokemon.json'),
 	router = express.Router({
     	mergeParams: true
 	});

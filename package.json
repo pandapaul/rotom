@@ -4,9 +4,9 @@
   "description": "Pokemon Go event reporter for Slack",
   "main": "server.js",
   "scripts": {
-    "start": "CHANNEL_ID=G1RDGGNNB node ./server.js",
-    "dev": "node ./server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack -p && node ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -20,8 +20,15 @@
   "homepage": "https://github.com/pandapaul/rotom#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "css-loader": "^0.23.1",
+    "expose-loader": "^0.7.1",
     "express": "^4.14.0",
     "fuse.js": "^2.3.0",
-    "request": "^2.73.0"
+    "jquery": "^3.1.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "request": "^2.73.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
   }
 }
