@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+ 
+<head>
+<meta charset="utf-8">
+<title>
+pokéapi - The Pokemon RESTful API
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pokeapi The Pokemon RESTful API">
+<meta name="author" content="Paul Hallett">
+<script type="text/javascript">
+//<![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"50cdd8e06391d248cea9cff9f131cf02",petok:"3c353cf31a09cf0566784c61413403fc0081e2c7-1469062106-1800",zone:"pokeapi.co",rocket:"a",apps:{},sha2test:0}];document.write('<script type="text/javascript" src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=e982913d31/cloudflare.min.js"><'+'\/script>');}}catch(e){};
+//]]>
+</script>
+<link href="/static/pokemon/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/pokemon/css/custom.css" rel="stylesheet">
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+<link rel="shortcut icon" href="/static/favicon.ico">
+<script data-rocketsrc="/static/pokemon/js/jquery.js" type="text/rocketscript">
+    </script>
+<script data-rocketsrc="/static/pokemon/js/bootstrap.min.js" type="text/rocketscript">
+    </script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<div class="navbar-brand">
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://pokeapi.co" data-text="Pokéapi - the Pokémon RESTful API " data-via="phalt_" data-related="phalt_">Tweet</a>
+<script type="text/rocketscript">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</div>
+</div>
+<div class="collapse navbar-collapse navbar-right">
+<ul class="nav navbar-nav">
+<li class="active"><a href="#">Home</a></li>
+<li><a href="/about/">About</a></li>
+<li><a href="/docsv2/">Documentation</a></li>
+</ul>
+</div> 
+</div>
+</div>
+<div class="container">
+<div class="row pad_top">
+<div class="col-md-2">
+</div>
+<div class="col-md-8">
+<h1 class="text-center">This is not the page you're looking for </h1>
+</div>
+<div class="col-md-2">
+</div>
+</div> 
+</div> 
+</body>
+<hr class="">
+<div class="footer">
+<p><a href="http://phalt.co?ref=pokeapi" target="_blank">&copy; Paul Hallett <script type="text/rocketscript">
+  document.write(new Date().getFullYear());
+</script></a>
+<span class="pull-right">
+<a href="https://twitter.com/phalt_" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false" data-dnt="true">Follow me on twitter</a>
+<script type="text/rocketscript">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<iframe src="https://ghbtns.com/github-btn.html?user=phalt&type=follow" allowtransparency="false" frameborder="0" scrolling="0" width="132" height="20"></iframe></span></p>
+</div>
+</div>
+ 
+<script type="text/rocketscript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53299289-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
