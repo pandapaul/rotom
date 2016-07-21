@@ -1,9 +1,19 @@
 @import "palette";
 
 .title-border(@color: @color_rotom_blue) {
-		border-top: 10px solid @color;
-		border-bottom: 10px solid @color;
-		color: @color;
+	border-top: 10px solid @color;
+	border-bottom: 10px solid @color;
+	color: @color;
+}
+
+.rotom-color-theme(@color: @color_rotom_blue) {
+	> .title {
+		.title-border(@color);			
+	}
+
+	.rotom-eye::after  {
+		background-color: @color;
+	}
 }
 
 body {
@@ -13,6 +23,8 @@ body {
 	background: @color_rotom_body;
 
 	.rotom {
+		.rotom-color-theme();
+
 		.rotom-eyes {
 			margin: 100px auto 0 auto;
 			height:120px;
@@ -55,8 +67,8 @@ body {
 					height:84px;
 					border-radius: ~"17px / 42px";
 					border: solid 1px @black;
-					background: @color_rotom_blue;
 					position:relative;
+					transition: background-color 2s;
 				}
 
 			}
@@ -70,57 +82,27 @@ body {
 			font-size: 3em;
 			font-weight: bolder;
 			padding: 20px 0;
-			.title-border();
+			transition: color 2s, border 2s;			
 		}
 
 		&.purple {
-			> .title {
-				.title-border(@color_rotom_purple);			
-			}
-
-			.rotom-eye::after  {
-				background-color: @color_rotom_purple;
-			}
+			.rotom-color-theme(@color_rotom_purple);
 		}
 
 		&.red {
-			> .title {
-				.title-border(@color_rotom_red);			
-			}
-
-			.rotom-eye::after {
-				background-color: @color_rotom_red;
-			}
+			.rotom-color-theme(@color_rotom_red);
 		}
 
 		&.yellow {
-			> .title {
-				.title-border(@color_rotom_yellow);			
-			}
-
-			.rotom-eye::after {
-				background-color: @color_rotom_yellow;
-			}
+			.rotom-color-theme(@color_rotom_yellow);
 		}
 
 		&.green {
-			> .title {
-				.title-border(@color_rotom_green);			
-			}
-
-			.rotom-eye::after {
-				background-color: @color_rotom_green;
-			}
+			.rotom-color-theme(@color_rotom_green);
 		}
 
 		&.blue {
-			> .title {
-				.title-border(@color_rotom_blue);			
-			}
-
-			.rotom-eye::after {
-				background-color: @color_rotom_blue;
-			}
+			.rotom-color-theme(@color_rotom_blue);
 		}
 	}
 }
