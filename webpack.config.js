@@ -11,7 +11,8 @@ module.exports = {
         loaders: [
             {test: /\.css$/, loader: "style!css"},
             {test: /\.less$/, loaders: ["style","css","less"]},
-            {test : /\.json?/, loader : 'json'}
+            {test : /\.json?/, loader : 'json'},
+            {test: /\.(jpg|png)$/,loader: 'url-loader?limit=100000'}
         ]
     },
     plugins: [
