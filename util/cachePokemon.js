@@ -1,8 +1,9 @@
 var fs = require('fs'),
-	request = require('request');
+	request = require('request'),
+	copyFile = require('./copyFile');
 
 function cachePokemon() {
-	request('http://pokeapi.co/api/v2/pokemon?limit=151', function (error, response, body) {
+	request('http://pokeapi.co/api/v2/pokemon?limit=10000', function (error, response, body) {
 
 		if (!error && response.statusCode == 200) {
 			var body = JSON.parse(body),
@@ -10,10 +11,16 @@ function cachePokemon() {
 				results = [];
 
 			for(var i = 0; i < pokemon.length; i++) {
+				var id = i + 1,
+					srcSpriteUrl = 'http://pokeapi.co/media/sprites/pokemon/' + id + '.png',
+					targetSpriteUrl = __dirname+'/../static/sprites/' + id + '.png';
+
 				results.push({
-					id: i+1,
-					name: pokemon[i].name.replace('-f','♀').replace('-m','♂'),
-					sprite: 'http://pokeapi.co/media/sprites/pokemon/' + (i + 1) + '.png'});
+					id: id,
+					name: pokemon[i].name.replace('-f','♀').replace('-m','♂')
+				});
+					
+				copyFile(srcSpriteUrl, targetSpriteUrl);			
 			}
 
 

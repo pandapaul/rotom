@@ -1,6 +1,6 @@
 var express = require('express'),
 	fuse = require('fuse.js'),
-	pokemon = require('../static/resources/pokemon.json'),
+	pokemon = require('../resources/pokemon.json'),
 	router = express.Router({
     	mergeParams: true
 	});
@@ -44,7 +44,7 @@ router.get('/', function (req, res) {
 		    attachments: [
 		        {	
 		        	text:"",
-		            image_url: target.sprite
+		            image_url: 'http://rotom.herokuapp.com/sprites/' + target.id + '.png'
 		        },{	
 		        	mrkdwn_in: ["text"],
 		        	text: 'A wild *' + target.name.toUpperCase() + '* appeared!',
