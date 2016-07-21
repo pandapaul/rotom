@@ -24,6 +24,7 @@
     "expose-loader": "^0.7.1",
     "express": "^4.14.0",
     "fuse.js": "^2.3.0",
+    "jimp": "^0.2.24",
     "jquery": "^3.1.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
