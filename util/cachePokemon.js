@@ -1,7 +1,7 @@
 var fs = require('fs'),
 	request = require('request'),
 	jimp = require('jimp'),
-	copyFile = require('./copyFile');
+	fileHandler = require('./fileHandler');
 
 function cachePokemon() {
 	request('http://pokeapi.co/api/v2/pokemon?limit=721', function (error, response, body) {
@@ -23,7 +23,7 @@ function cachePokemon() {
 					name: name
 				});
 					
-				copyFile(srcSpriteUrl, targetSpriteUrl);
+				fileHandler.copyFile(srcSpriteUrl, targetSpriteUrl);
 			}
 
 

@@ -2,6 +2,7 @@ var express = require('express'),
 	fuse = require('fuse.js'),
 	pokemon = require('../resources/pokemon.json'),
 	getRandomInt = require('../util/getRandomInt'),
+	fileHandler = require('../util/fileHandler'),
 	router = express.Router({
     	mergeParams: true
 	});
@@ -37,15 +38,17 @@ router.get('/', function (req, res) {
 	}
 
 	function sendGameResponse() {
-		var id = getRandomInt(1,pokemon.length);
+		var id = getRandomInt(1,pokemon.length),
+			str;
 
+		str = fileHandler.base64Encode( __dirname+'/../static/sprites/' + id + '.shadow.png');
 		res.json({
     		response_type: 'in_channel',
     		text: 'Who\'s that Pokémon?',
 		    attachments: [
 		        {	
 		        	text:'',
-		            image_url: 'http://rotom.herokuapp.com/sprites/' + id + '.shadow.png'
+		            image_url: 'data:image/png;base64,' + str
 		        }
 		    ]
 		});

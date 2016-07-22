@@ -1,5 +1,6 @@
 var jimp = require('jimp'),
-	pokemon = require('../resources/pokemon.json');
+	pokemon = require('../resources/pokemon.json'),
+	fileHandler = require('./fileHandler');
 
 function createShadows() {
 	var results = [];
@@ -10,18 +11,8 @@ function createShadows() {
 			src = __dirname+'/../static/sprites/' + id + '.png',
 			trgt = __dirname+'/../static/sprites/' + id + '.shadow.png';
 
-		saveAndModifyImage(name, src, trgt);
+		fileHandler.makeShadowCopy(src, trgt);
 	}
-}
-
-function saveAndModifyImage(name, src, trgt) {
-	jimp.read(src, function (err, image) {
-		if(image) {
-			image.brightness(-1);
-			image.write(trgt);
-			console.log(name + ' shadow sprite saved to: ' + trgt)
-		}
-	});	
 }
 
 module.exports = createShadows;
