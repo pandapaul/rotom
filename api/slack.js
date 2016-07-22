@@ -41,14 +41,13 @@ router.get('/', function (req, res) {
 		var id = getRandomInt(1,pokemon.length),
 			str;
 
-		str = fileHandler.base64Encode( __dirname+'/../static/sprites/' + id + '.shadow.png');
 		res.json({
     		response_type: 'in_channel',
     		text: 'Who\'s that Pokémon?',
 		    attachments: [
 		        {	
 		        	text:'',
-		            image_url: 'data:image/png;base64,' + str
+		            image_url: 'http://rotom.herokuapp.com/sprites/' + id + '.shadow.png'
 		        }
 		    ]
 		});
