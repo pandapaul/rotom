@@ -15,7 +15,6 @@ router.get('/', function (req, res) {
 		input = inputArray && inputArray[0],
 		target;
 
-	console.log(inputArray);
 	function isNotAuthorizedChannel() {
 		return !!(process.env.CHANNEL_ID && req.query.channel_id !== process.env.CHANNEL_ID);
 	} 
@@ -52,7 +51,7 @@ router.get('/', function (req, res) {
 		    attachments: [
 		        {	
 		        	text:'',
-		            image_url: 'http://rotom.herokuapp.com/img/silhouettes/' + pokemon[i].shadow
+		            image_url: 'http://rotom.herokuapp.com/img/silhouettes/' + pokemon[id].shadow
 		        }
 		    ]
 		});
