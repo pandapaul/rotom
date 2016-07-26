@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "webpack -p && node ./server.js",
+    "dev": " node ./server.js & webpack -dw",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -p"
   },
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/pandapaul/rotom#readme",
   "dependencies": {
+    "@slack/client": "^3.5.1",
     "body-parser": "^1.15.2",
     "css-loader": "^0.23.1",
     "expose-loader": "^0.7.1",

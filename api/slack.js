@@ -1,3 +1,5 @@
+require('../util/extensions');
+
 var express = require('express'),
 	fuse = require('fuse.js'),
 	pokemon = require('../resources/pokemon.json'),
@@ -8,9 +10,12 @@ var express = require('express'),
 	});
 
 router.get('/', function (req, res) {
-	var input = req && req.query && req.query.text && req.query.text.toLowerCase(),
+	var inputString = req && req.query && req.query.text && req.query.text.toLowerCase(),
+		inputArray = inputString && inputString.split(' ').clean(''),
+		input = inputArray && inputArray[0],
 		target;
 
+	console.log(inputArray);
 	function isNotAuthorizedChannel() {
 		return !!(process.env.CHANNEL_ID && req.query.channel_id !== process.env.CHANNEL_ID);
 	} 
@@ -38,7 +43,7 @@ router.get('/', function (req, res) {
 	}
 
 	function sendGameResponse() {
-		var id = getRandomInt(1,pokemon.length),
+		var id = getRandomPokemonId(),
 			str;
 
 		res.json({
@@ -47,10 +52,26 @@ router.get('/', function (req, res) {
 		    attachments: [
 		        {	
 		        	text:'',
-		            image_url: 'http://rotom.herokuapp.com/sprites/' + id + '.shadow.png'
+		            image_url: 'http://rotom.herokuapp.com/img/silhouettes/' + pokemon[i].shadow
 		        }
 		    ]
 		});
+	}
+
+	function getRandomPokemonId() {
+		var min = 1,
+			max = pokemon.length;
+
+		if(inputArray[1]) {
+			max = inputArray[1];
+		}
+
+		if(inputArray[2]) {
+			max = inputArray[2];
+			min = inputArray[1];
+		}
+
+		return getRandomInt(parseInt(min)-1,parseInt(max)-1);
 	}
 
 	function getExactPokemonMatch() {
@@ -74,7 +95,7 @@ router.get('/', function (req, res) {
 		    attachments: [
 		        {	
 		        	text:"",
-		            image_url: 'http://rotom.herokuapp.com/sprites/' + target.id + '.png'
+		            image_url: 'http://rotom.herokuapp.com/img/sprites/' + target.id + '.png'
 		        },{	
 		        	mrkdwn_in: ["text"],
 		        	text: 'A wild *' + target.name.toUpperCase() + '* appeared!'

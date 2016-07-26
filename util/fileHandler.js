@@ -1,5 +1,6 @@
 var http = require('http'),
-  fs = require('fs');
+  fs = require('fs'),
+  jimp = require('jimp');
 
 function copyFile(source, target, cb) {
   var file = fs.createWriteStream(target);
