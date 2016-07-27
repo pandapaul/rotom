@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/pandapaul/rotom#readme",
   "dependencies": {
-    "@slack/client": "^3.5.1",
     "body-parser": "^1.15.2",
     "botkit": "^0.2.2",
     "css-loader": "^0.23.1",
