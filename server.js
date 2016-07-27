@@ -1,3 +1,5 @@
+require('./bot/index');
+
 var express = require('express'),
 	router = express.Router(),
 	api = require('./api/index'),
