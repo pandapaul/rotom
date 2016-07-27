@@ -51,7 +51,7 @@ router.get('/', function (req, res) {
 		    attachments: [
 		        {	
 		        	text:'',
-		            image_url: 'http://rotom.herokuapp.com/img/silhouettes/' + pokemon[id].shadow
+		            image_url:  + pokemon[id].shadow
 		        }
 		    ]
 		});
