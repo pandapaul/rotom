@@ -51,7 +51,7 @@ router.get('/', function (req, res) {
 		    attachments: [
 		        {	
 		        	text:'',
-		            image_url:  + pokemon[id].shadow
+		            image_url:  pokemon[id].shadow
 		        }
 		    ]
 		});
@@ -94,7 +94,7 @@ router.get('/', function (req, res) {
 		    attachments: [
 		        {	
 		        	text:"",
-		            image_url: 'http://rotom.herokuapp.com/img/sprites/' + target.id + '.png'
+		            image_url: target.sprite
 		        },{	
 		        	mrkdwn_in: ["text"],
 		        	text: 'A wild *' + target.name.toUpperCase() + '* appeared!'
