@@ -16,7 +16,7 @@ rtm.on(CLIENT_EVENTS.RTM.AUTHENTICATED, function (rtmStartData) {
 var RTM_EVENTS = require('@slack/client').RTM_EVENTS;
 
 rtm.on(RTM_EVENTS.MESSAGE, function (message) {
-  console.log(message);
+	rtm.sendMessage('I heard that.', message.channel);
 });
 
 rtm.on(RTM_EVENTS.CHANNEL_CREATED, function (message) {
