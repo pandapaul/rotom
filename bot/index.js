@@ -1,25 +1,21 @@
-var RtmClient = require('@slack/client').RtmClient;
-
 var token = process.env.SLACK_API_TOKEN || '';
 
-var rtm = new RtmClient(token, {logLevel: 'debug'});
-rtm.start();
-
-var CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
-
-rtm.on(CLIENT_EVENTS.RTM.AUTHENTICATED, function (rtmStartData) {
-  console.log(`Logged in as ${rtmStartData.self.name} of team ${rtmStartData.team.name}, but not yet connected to a channel`);
+var Botkit = require('botkit');
+var rotom = require('../util/rotom');
+var controller = Botkit.slackbot();
+var bot = controller.spawn({
+  token: token
 });
 
-var RTM_EVENTS = require('@slack/client').RTM_EVENTS;
-
-rtm.on(RTM_EVENTS.MESSAGE, function (message) {
-		rtm.sendMessage({
-	    "type": "message",
-	    "text": "Hello"
-	}, message.channel);
+bot.startRTM(function(err,bot,payload) {
+  if (err) {
+    throw new Error('Could not connect to Slack');
+  }
 });
 
-rtm.on(RTM_EVENTS.CHANNEL_CREATED, function (message) {
-  // Listens to all `channel_created` events from the team
+
+controller.hears(['(.*)'], 'direct_message,direct_mention,mention', function(bot, message) {
+	var inputString = message && message.match && message.match[0];
+
+    bot.reply(message, rotom.slashCommand(inputString));
 });
