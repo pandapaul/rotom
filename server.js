@@ -10,7 +10,7 @@ listen();
 
 function routes() {
 	app.use(express.static('static'));
-	app.use('/api/slack/', api.slack);
+	app.use('/api/slack/', api.slack.router);
 	app.use('/api/admin/', api.admin);
 }
 
