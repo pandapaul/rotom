@@ -24,6 +24,7 @@ controller.hears(['game'], 'direct_message,direct_mention,mention', function(bot
 
     convo.ask('What do you think it is?',function(response,convo) {
       if(response.text.match(/(\bquit\b)|(\bgive up\b)|(\bcancel\b)/ig)) {
+        convo.say('Give up?  Okay!');
         convo.say(slack.getGameCorrectAnswer(gameResp.pokemon.name));
         convo.next();
         return;
