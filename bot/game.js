@@ -58,11 +58,18 @@ let Game = function(channel) {
 			completed: false,
 			final: true
 		}
-
 	];
 	this.log = function() {
 		console.log('Logging', this.channel);
 	};
+	this.forfeit = {
+		pattern: /(\bquit\b)|(\bgive up\b)|(\bcancel\b)/ig,
+		response: function(bot, message, answer) {
+			bot.reply(message,'Give up?  Okay!');
+       		bot.reply(message,slack.getGameCorrectAnswer(answer.name));
+		}
+
+	}
 	this.getQuestion = function(num) {
 		return this.questions[num];
 	};
@@ -71,6 +78,7 @@ let Game = function(channel) {
 		let question = this.getQuestion(num);
 		if(!question) {
 			this.completed = true;
+			return;
 		}
 
 		if(question.completed) {
@@ -80,11 +88,18 @@ let Game = function(channel) {
 		return question;
 	};
 	this.respond = function(bot, message) {
+		if(this.started && message.text.match(this.forfeit.pattern)) {
+			this.forfeit.response(bot,message, this.answer);
+			this.completed = true;
+			return;
+		}
+
 		let question = this.getNextQuestion();
 
 		if(question && question.events.indexOf(message.event) !== -1) {
 			if(message.text.match(question.pattern)) {
 				console.log(this.answer);
+				this.started = true;
 				question.response(bot, message, this.answer);
 				if(question.completed && question.final) {
 					this.completed = true;

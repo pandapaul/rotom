@@ -18,6 +18,7 @@ bot.startRTM(function(err,bot,payload) {
 });
 
 controller.hears(['(.*)'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+  
   if(!games[message.channel] || games[message.channel].completed) {
       games[message.channel] = new Game();
       games[message.channel].channel = message.channel;
