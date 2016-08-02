@@ -1,3 +1,4 @@
+"use strict";
 let slack = require('../api/slack');
 
 let Game = function(channel) {
