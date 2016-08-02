@@ -40,19 +40,23 @@ function isGameInput(input) {
 }
 
 function sendGameResponse(var1, var2) {
-	var id = getRandomPokemonId(var1, var2);
+	var pokemon = getRandomPokemon(var1, var2);
 
 	return {
 		response_type: 'in_channel',
 		text: 'Who\'s that Pokémon?',
-		pokemon: pokemon[id],
+		pokemon: pokemon,
 	    attachments: [
 	        {	
 	        	text:'',
-	            image_url:  pokemon[id].shadow
+	            image_url:  pokemon.shadow
 	        }
 	    ]
 	};
+}
+
+function getRandomPokemon(var1, var2) {
+	return pokemon[getRandomPokemonId(var1, var2)]
 }
 
 function getRandomPokemonId(var1, var2) {
@@ -183,5 +187,6 @@ module.exports = {
 	sendNoMatchFoundResponse: sendNoMatchFoundResponse,
 	slashCommand: slashCommand,
 	identifyPokemon: identifyPokemon,
-	getGameCorrectAnswer: getGameCorrectAnswer
+	getGameCorrectAnswer: getGameCorrectAnswer,
+	getRandomPokemon: getRandomPokemon
 };

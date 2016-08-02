@@ -7,14 +7,26 @@ var bot = controller.spawn({
   token: token
 });
 
+var Game = require('./game.js');
+
+var games = {};
+
 bot.startRTM(function(err,bot,payload) {
   if (err) {
     throw new Error('Could not connect to Slack');
   }
 });
 
+controller.hears(['(.*)'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+  if(!games[message.channel] || games[message.channel].completed) {
+      games[message.channel] = new Game();
+      games[message.channel].channel = message.channel;
+  }
 
+  games[message.channel].respond(bot, message);
+});
 
+/*
 controller.hears(['game'], 'direct_message,direct_mention,mention', function(bot, message) {
   bot.startConversation(message,function(err,convo) {
   	var attempts = 0,
@@ -65,8 +77,11 @@ controller.hears(['game'], 'direct_message,direct_mention,mention', function(bot
   });
 });
 
+
+
 controller.hears(['(.*)'], 'direct_message,direct_mention,mention', function(bot, message) {
 	var inputString = message && message.match && message.match[0];
 
     bot.reply(message, slack.slashCommand(inputString));
 });
+*/
