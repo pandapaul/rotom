@@ -4,6 +4,12 @@ let slack = require('../api/slack');
 let Game = function(channel) {
 	this.channel = '';
 	this.answer = slack.getRandomPokemon(),
+	this.fallback = {
+		events: ['direct_message','direct_mention','mention'],
+		response: function(bot, message, answer) {
+			bot.reply(message, slack.slashCommand(message.text));
+		}
+	};
 	this.questions = [
 		{
 			events: ['direct_message','direct_mention','mention'],
@@ -104,6 +110,12 @@ let Game = function(channel) {
 				if(question.completed && question.final) {
 					this.completed = true;
 				}
+				return;
+			}
+		}
+		if(this.fallback && this.fallback.events.indexOf(message.event) !== -1) {
+			if(message.text.match(this.fallback.pattern)) {
+				this.fallback.response(bot,message, this.answer);
 			}
 		}
 	};
