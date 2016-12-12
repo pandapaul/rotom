@@ -4,7 +4,7 @@
   "description": "Pokemon Go event reporter for Slack",
   "main": "server.js",
   "scripts": {
-    "start": "webpack -p && node ./server.js",
+    "start": "webpack -p",// && node ./server.js",
     "dev": " node ./server.js & webpack -dw",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -p"
